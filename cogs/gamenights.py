@@ -19,12 +19,12 @@ class GameNightCog(commands.Cog):
         self.bot = bot
 
         # Your existing setup code (replacing globals with instance variables)
-        self.SERVICE_ACCOUNT_FILE = "BotCreds.json"
-        self.SPREADSHEET_ID = "1Q8x4Qa9_8k7RpjqVnojw-BDeOeTEq1gnhYmrQdvqIr4"
+        self.SERVICE_ACCOUNT_FILE = bot.SERVICE_ACCOUNT_FILE 
+        self.SPREADSHEET_ID = bot.SPREADSHEET_ID 
 
-        self.MaxLine = 30  # default = 30
-        self.MinTime = 15  # default = 15
-        self.WaitForCoHost = 60  # default = 60
+        self.MaxLine = bot.MaxLine 
+        self.MinTime = bot.MinTime 
+        self.WaitForCoHost = bot.WaitForCoHost 
 
         self.is_timer_running = False
         self.members_in_vc = {}
