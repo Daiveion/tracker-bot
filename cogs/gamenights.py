@@ -19,12 +19,12 @@ class GameNightCog(commands.Cog):
         self.bot = bot
 
         # Your existing setup code (replacing globals with instance variables)
-        self.SERVICE_ACCOUNT_FILE = "BotCreds.json"
-        self.SPREADSHEET_ID = "1Q8x4Qa9_8k7RpjqVnojw-BDeOeTEq1gnhYmrQdvqIr4"
+        self.SERVICE_ACCOUNT_FILE = bot.SERVICE_ACCOUNT_FILE
+        self.SPREADSHEET_ID = bot.SPREADSHEET_ID
 
-        self.MaxLine = 30  # default = 30
-        self.MinTime = 15  # default = 15
-        self.WaitForCoHost = 60  # default = 60
+        self.MaxLine = bot.MaxLine
+        self.MinTime = bot.MinTime
+        self.WaitForCoHost = bot.WaitForCoHost
 
         self.is_timer_running = False
         self.members_in_vc = {}
@@ -34,11 +34,9 @@ class GameNightCog(commands.Cog):
             self.config = json.load(file)
 
         # Choose which token to use (main or test)
-        self.USE_TEST_MODE = False  # Change this to False for production/pushing to main branch
-        self.guild_id = self.config["test_guild_id"] if self.USE_TEST_MODE else self.config["main_guild_id"]
-        self.ReportChannelID = self.config["test_ReportChannelID"] if self.USE_TEST_MODE else self.config["main_ReportChannelID"]
-        self.TrackedVoiceChannelID = self.config["test_TrackedVoiceChannelID"] if self.USE_TEST_MODE else self.config["main_TrackedVoiceChannelID"]
-        self.BotToken = self.config["test_token"] if self.USE_TEST_MODE else self.config["main_token"]
+        self.guild_id = self.config["test_guild_id"] if bot.USE_TEST_MODE else self.config["main_guild_id"]
+        self.ReportChannelID = self.config["test_ReportChannelID"] if bot.USE_TEST_MODE else self.config["main_ReportChannelID"]
+        self.TrackedVoiceChannelID = self.config["test_TrackedVoiceChannelID"] if bot.USE_TEST_MODE else self.config["main_TrackedVoiceChannelID"]
 
         self.creds = Credentials.from_service_account_file(self.SERVICE_ACCOUNT_FILE, scopes=["https://www.googleapis.com/auth/spreadsheets"])
         self.client = gspread.authorize(self.creds)
@@ -335,5 +333,6 @@ class GameNightCog(commands.Cog):
             print("No participant data to save.")
 
 
-def setup(bot):
-    bot.add_cog(GameNightCog(bot))
+async def setup(bot):
+    await bot.add_cog(GameNightCog(bot))
+

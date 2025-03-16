@@ -8,7 +8,16 @@ intents.guilds = True
 intents.voice_states = True
 intents.members = True
 
-bot = commands.Bot(command_prefix="đ", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# Gamenight Varaibles:
+
+bot.MaxLine = 30  # default = 30
+bot.MinTime = 15  # default = 15
+bot.WaitForCoHost = 60  # default = 60
+
+bot.SERVICE_ACCOUNT_FILE = "BotCreds.json"
+bot.SPREADSHEET_ID = "1Q8x4Qa9_8k7RpjqVnojw-BDeOeTEq1gnhYmrQdvqIr4"
 
 # Load your cogs here
 @bot.event
@@ -23,10 +32,7 @@ with open("config.json", "r") as file:
     config = json.load(file)
 
 # Choose which token to use (main or test)
-USE_TEST_MODE = False  # Change this to False for production/pushing to main branch
-guild_id = config["test_guild_id"] if USE_TEST_MODE else config["main_guild_id"]
-ReportChannelID = config["test_ReportChannelID"] if USE_TEST_MODE else config["main_ReportChannelID"]
-TrackedVoiceChannelID = config["test_TrackedVoiceChannelID"] if USE_TEST_MODE else config["main_TrackedVoiceChannelID"]
-BotToken = config["test_token"] if USE_TEST_MODE else config["main_token"]
+bot.USE_TEST_MODE = True
+BotToken = config["test_token"] if bot.USE_TEST_MODE else config["main_token"]
 
 bot.run(BotToken)
