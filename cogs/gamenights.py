@@ -19,14 +19,6 @@ class GameNightCog(commands.Cog):
         self.bot = bot
 
         # Your existing setup code (replacing globals with instance variables)
-
-        self.SERVICE_ACCOUNT_FILE = bot.SERVICE_ACCOUNT_FILE
-        self.SPREADSHEET_ID = bot.SPREADSHEET_ID
-
-        self.MaxLine = bot.MaxLine
-        self.MinTime = bot.MinTime
-        self.WaitForCoHost = bot.WaitForCoHost
-
         self.SERVICE_ACCOUNT_FILE = "BotCreds.json"
         self.SPREADSHEET_ID = "1Q8x4Qa9_8k7RpjqVnojw-BDeOeTEq1gnhYmrQdvqIr4"
 
@@ -42,17 +34,9 @@ class GameNightCog(commands.Cog):
             self.config = json.load(file)
 
         # Choose which token to use (main or test)
-<<<<<<< HEAD
         self.guild_id = self.config["test_guild_id"] if bot.USE_TEST_MODE else self.config["main_guild_id"]
         self.ReportChannelID = self.config["test_ReportChannelID"] if bot.USE_TEST_MODE else self.config["main_ReportChannelID"]
         self.TrackedVoiceChannelID = self.config["test_TrackedVoiceChannelID"] if bot.USE_TEST_MODE else self.config["main_TrackedVoiceChannelID"]
-=======
-        self.USE_TEST_MODE = False  # Change this to False for production/pushing to main branch
-        self.guild_id = self.config["test_guild_id"] if self.USE_TEST_MODE else self.config["main_guild_id"]
-        self.ReportChannelID = self.config["test_ReportChannelID"] if self.USE_TEST_MODE else self.config["main_ReportChannelID"]
-        self.TrackedVoiceChannelID = self.config["test_TrackedVoiceChannelID"] if self.USE_TEST_MODE else self.config["main_TrackedVoiceChannelID"]
-        self.BotToken = self.config["test_token"] if self.USE_TEST_MODE else self.config["main_token"]
->>>>>>> d18b922f1e31b080dfb7edb1b6eee6f1e7e3257b
 
         self.creds = Credentials.from_service_account_file(self.SERVICE_ACCOUNT_FILE, scopes=["https://www.googleapis.com/auth/spreadsheets"])
         self.client = gspread.authorize(self.creds)
@@ -348,12 +332,6 @@ class GameNightCog(commands.Cog):
         else:
             print("No participant data to save.")
 
-
-<<<<<<< HEAD
 async def setup(bot):
     await bot.add_cog(GameNightCog(bot))
 
-=======
-def setup(bot):
-    bot.add_cog(GameNightCog(bot))
->>>>>>> d18b922f1e31b080dfb7edb1b6eee6f1e7e3257b
