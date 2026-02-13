@@ -24,5 +24,4 @@ This project is licensed under the MIT License. See `LICENSE` for details.
 For issues or suggestions, open an issue on GitHub
 
 ---
-🔹 *Built with Python and discord.py*
-
+🔹 *Built with Python and discord.py and love* 💗
