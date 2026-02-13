@@ -6,7 +6,7 @@ Carbot is a powerful and customizable Discord bot designed to streamline moderat
 ## 🚀 Features
 - **Slash Commands**
 - **Custom Snippets** for quick responses
-- **Automated Moderation Trackking**
+- **Automated Moderation Tracking**
 - **Logging & Alerts**
 
 ## 🛠 Installation
