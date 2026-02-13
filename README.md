@@ -1,7 +1,7 @@
-# Carbot - Discord Bot
+# Tracker Bot - Discord Bot
 
 ## 📌 About
-Carbot is a powerful and customizable Discord bot designed to streamline moderation, automate tasks, and enhance community engagement. Whether you're managing a small friend group or a large server, Carbot provides essential features with a user-friendly interface.
+Carbot is a powerful and customizable Discord bot designed to streamline moderation, automate tasks, and enhance community engagement. Whether you're managing a small friend group or a large server, Tracker Bot provides essential features with a user-friendly interface.
 
 ## 🚀 Features
 - **Slash Commands**
